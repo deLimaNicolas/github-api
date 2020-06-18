@@ -2,10 +2,10 @@
   "name": "github-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js",
     "lint": "eslint  --ext .js"
   },
   "repository": {
@@ -18,7 +18,10 @@
     "url": "https://github.com/deLimaNicolas/github-api/issues"
   },
   "homepage": "https://github.com/deLimaNicolas/github-api#readme",
-  "dependencies": {},
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
   "devDependencies": {
     "eslint": "7.2.0",
     "eslint-config-airbnb-base": "14.2.0",
