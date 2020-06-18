@@ -2,6 +2,7 @@ const { PORT, ENV } = process.env;
 
 const serverConfig = {
   dev: {
+    GIT_V3_ORG: 'https://api.github.com/orgs/',
     ROUTE: '/repositories/',
     PORT: PORT || '3000',
   },
