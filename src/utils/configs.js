@@ -2,7 +2,8 @@ const { PORT, ENV } = process.env;
 
 const serverConfig = {
   dev: {
-    GIT_V3_ORG: 'https://api.github.com/orgs/',
+    GIT_V4: 'https://api.github.com/graphql',
+    GIT_PUB_TOKEN: 'Bearer 762f41e51efb51017e0f9228d31c2e6303c618ec',
     ROUTE: '/repositories/',
     PORT: PORT || '3000',
   },
