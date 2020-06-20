@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const { GIT_V4, GIT_PUB_TOKEN } = serverConfig;
 
-const getLastArrElm = (array) => array.slice(-1)[0];
+export const getLastArrElm = (array) => array[array.length - 1];
 
 const gitQuery = (query) =>
   axios({
@@ -20,7 +20,7 @@ const generateRepositoriesQuery = (orgName, after) => {
   return `
   query { organization( login: "${orgName}" ) {
     name,
-    repositories(first: 30, ${after}, orderBy: { field: STARGAZERS, direction: DESC }) {
+    repositories(first: 100, ${after}, orderBy: { field: STARGAZERS, direction: DESC }) {
       edges{
         cursor,
         node {
@@ -36,21 +36,24 @@ const generateRepositoriesQuery = (orgName, after) => {
     }
   }
   }`;
-};  
+};
 
-const getRepositoriesByOrg = async ({ orgName, after }) => {
+const getRepositoriesByOrgPaginated = async ({ orgName, after }) => {
   const response = await gitQuery(generateRepositoriesQuery(orgName, after));
 
+  if (!response.data.data) return null;
   const { edges, pageInfo } = response.data.data.organization.repositories;
-  const repositories =  edges.map(el => ({name: el.node.name, stars: el.node.stargazers.totalCount}));
+  const repositories = edges.map((el) => ({
+    name: el.node.name,
+    stars: el.node.stargazers.totalCount,
+  }));
   const lastCursor = getLastArrElm(edges).cursor;
 
   return {
     repositories,
     pageInfo,
-    lastCursor
+    lastCursor,
   };
 };
 
-export default getRepositoriesByOrg;
-
+export default getRepositoriesByOrgPaginated ;

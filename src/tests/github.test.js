@@ -1,16 +1,16 @@
 /* eslint-disable no-undef */
-import getRepositoriesByOrg from '../utils/github.js';
+import getRepositoriesByOrg, { getLastArrElm } from '../utils/github.js';
 
 describe('testing github utils -- using organizations : IBM && Microsoft', () => {
   it('should return object containing repositories, pageInfo and lastCursor -- no after', async () => {
-    const test = await getRepositoriesByOrg({orgName:'IBM'});
+    const test = await getRepositoriesByOrg({ orgName: 'Netflix' });
     const { repositories: r1, pageInfo: p1, lastCursor: l1 } = test;
 
     expect(r1).toBeTruthy();
     expect(p1).toBeTruthy();
     expect(l1).toBeTruthy();
 
-    const test2 = await getRepositoriesByOrg({orgName:'microsoft'});
+    const test2 = await getRepositoriesByOrg({ orgName: 'microsoft' });
     const { repositories: r2, pageInfo: p2, lastCursor: l2 } = test2;
 
     expect(r2).toBeTruthy();
@@ -19,14 +19,14 @@ describe('testing github utils -- using organizations : IBM && Microsoft', () =>
   });
 
   it('should return object containing repositories, pageInfo and lastCursor -- passing after', async () => {
-    const test = await getRepositoriesByOrg({orgName:'IBM'});
+    const test = await getRepositoriesByOrg({ orgName: 'IBM' });
     const { repositories: r1, pageInfo: p1, lastCursor: l1 } = test;
 
     expect(r1).toBeTruthy();
     expect(p1).toBeTruthy();
     expect(l1).toBeTruthy();
 
-    const test2 = await getRepositoriesByOrg({orgName:'IBM', after: l1});
+    const test2 = await getRepositoriesByOrg({ orgName: 'IBM', after: l1 });
     const { repositories: r2, pageInfo: p2, lastCursor: l2 } = test2;
 
     expect(r2).toBeTruthy();
@@ -35,18 +35,25 @@ describe('testing github utils -- using organizations : IBM && Microsoft', () =>
   });
 
   it('should have no assertions checking if array is sorted by stars DESC', async () => {
-    const test = await getRepositoriesByOrg({orgName:'IBM'});
+    const test = await getRepositoriesByOrg({ orgName: 'IBM' });
     const { repositories: r1 } = test;
     const r1Length = r1.length - 1;
-    
-    try{
-      r1.forEach((({stars}, i) => {
-        if(!(i < r1Length )) return;
-        else if(stars < r1[i + 1].stars) throw 'SORT_BROKEN';
-      }));
-    }catch(e){
+
+    try {
+      r1.forEach(({ stars }, i) => {
+        if (!(i < r1Length)) return;
+        else if (stars < r1[i + 1].stars) throw 'SORT_BROKEN';
+      });
+    } catch (e) {
       expect(e).toBe('SORT_BROKEN');
     }
     expect.assertions(0);
   });
-});
+}, 150000);
+
+describe('testing data manipulation utils', () => {
+  it('should return last element of a given array', () => {
+    const array = [1, 2, 3, 4, 5, 6];
+    expect(getLastArrElm(array)).toBe(6);
+  });
+}, 150000);
