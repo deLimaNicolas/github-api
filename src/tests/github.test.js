@@ -34,15 +34,16 @@ describe('testing github utils -- using organizations : IBM && Microsoft', () =>
     expect(l2).toBeTruthy();
   });
 
-  it('should have no assertions checking if array is sorted by stars DESC', async () => {
+  it('should have no assertions checking if array is sorted correctly by stars DESC', async () => {
     const test = await getRepositoriesByOrg({ orgName: 'IBM' });
     const { repositories: r1 } = test;
     const r1Length = r1.length - 1;
 
     try {
       r1.forEach(({ stars }, i) => {
-        if (!(i < r1Length)) return;
-        else if (stars < r1[i + 1].stars) throw 'SORT_BROKEN';
+        const isLastPosition = i >= r1Length;
+        if (isLastPosition) return;
+        else if (stars < r1[i + 1].stars) throw 'SORT_BROKEN'; //check if previous index is higher than current index
       });
     } catch (e) {
       expect(e).toBe('SORT_BROKEN');

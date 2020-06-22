@@ -1,0 +1,15 @@
+version: '3'
+services:
+  redis-server:
+   image: 'redis'
+   container_name: cache
+   expose: 
+    - 6379
+  app:
+    build: .
+    ports: ['3000:3000']
+    environment: 
+      - ENV=dev
+      - PORT=3000
+      - REDIS_URL=redis://cache
+    command: sh -c 'npm i && npm run start'
