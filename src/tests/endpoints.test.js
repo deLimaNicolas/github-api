@@ -8,6 +8,13 @@ describe('testing API endpoints -- repositories', () => {
     expect(response.status).toBe(200);
   });
 
+  it('should return cached: true when searching for a valid organiztion twice in a minute -- /repositories/:name', async () => {
+    await supertest(app).get('/repositories/Netflix');
+    const response = await supertest(app).get('/repositories/Netflix');
+    expect(response.status).toBe(200);
+    expect(response.body.usingCache).toBeTruthy();
+  });
+
   it('should return 404 when searching for a invalid organiztion -- /repositories/:name', async () => {
     const response = await supertest(app).get(`/repositories/${Date.now()}`);
     expect(response.status).toBe(404);
@@ -17,5 +24,4 @@ describe('testing API endpoints -- repositories', () => {
     const response = await supertest(app).get('/repositories/microsoft');
     expect(response.status).toBe(200);
   });
-
 });

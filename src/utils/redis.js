@@ -22,5 +22,5 @@ export const cacheMiddleware = async (req, res, next) => {
   const { name } = req.params;
   let cached = await getCachedKey(name);
   cached = JSON.parse(cached);
-  cached ? sendServerResponse(res, 200, { repositories: cached }) : next();
+  cached ? sendServerResponse(res, 200, { repositories: cached, usingCache: true }) : next();
 };
