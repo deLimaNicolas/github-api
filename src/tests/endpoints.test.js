@@ -2,7 +2,7 @@
 import supertest from 'supertest';
 import app from '../application.js';
 
-describe('testing API endpoints', () => {
+describe('testing API endpoints -- repositories', () => {
   it('should return 200 when searching for a valid organiztion -- /repositories/:name', async () => {
     const response = await supertest(app).get('/repositories/Netflix');
     expect(response.status).toBe(200);

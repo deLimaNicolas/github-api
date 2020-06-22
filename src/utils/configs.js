@@ -2,6 +2,9 @@ const { PORT, ENV } = process.env;
 
 const serverConfig = {
   dev: {
+    REDIS: {
+      TTL: 60000, //one minutes
+    },
     API_RESPONSE_LIMIT: 500,
     GIT_V4: 'https://api.github.com/graphql',
     GIT_PUB_TOKEN: 'Bearer 762f41e51efb51017e0f9228d31c2e6303c618ec',

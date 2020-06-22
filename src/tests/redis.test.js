@@ -6,7 +6,7 @@ const sleep = (ms) =>
     setTimeout(resolve, ms);
   });
 
-describe('testing redis functions', () => {
+describe('testing redis functions by doing entire cache worflow', () => {
   it('should store a cached key and check its creation and expiration', async () => {
     const valueToCheck = { value: Date.now() };
     const keyToCheck = 'newKey';
@@ -23,6 +23,5 @@ describe('testing redis functions', () => {
     //checking TTL
     const expiredKey = await getCachedKey(keyToCheck);
     expect(expiredKey).toBe(null);
-    
   }, 2000);
 });
