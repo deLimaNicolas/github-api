@@ -29,7 +29,7 @@ Por ser um teste que nunca vai pra produção tomei a liberdade de usar um [mód
 
 ## Circle-CI
 
-Criei um pipeline responsável por rodar os testes para toda movimentação de branches feita no git. Achei isso necessário pois para rodar todos os testes localmente é necessário um servidor Redis disponível (Para testes envolvendo cache). Caso o programador tenha algum impedimento com isso ele pode deixar esse trabalho para o pipeline, que vai rodar o REdis internamente para realizar os testes.
+Criei um pipeline responsável por rodar os testes para toda movimentação de branches feita no git. Achei isso necessário pois para rodar todos os testes localmente é necessário um servidor Redis disponível (Para testes envolvendo cache). Caso o programador tenha algum impedimento com isso ele pode deixar esse trabalho para o pipeline, que vai rodar o Redis internamente para realizar os testes.
 ![pipeline](https://my-use.s3-sa-east-1.amazonaws.com/Firefox_Screenshot_2020-06-22T07-18-55.080Z.png)
 
 ## Uso do endpoint
