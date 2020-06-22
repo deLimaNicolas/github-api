@@ -12,6 +12,7 @@ Todas as minhas escolhas foram baseadas exclusivamente no que foi pedido no docu
 - Aplicar da melhor maneira para o problema as funcionalidades da API do github
 - Deixar a implementação o mais simples possível, usando "dumb code" sempre que condizente. [Minha opinião sobre dumb code](https://hackernoon.com/why-senior-devs-write-dumb-code-and-how-to-spot-a-junior-from-a-mile-away-27fa263b101a)
 - Gerar uma solução que faça sentido existir como um microsserviço, no caso algo pequeno, com as dependências escolhidas a dedo
+- Implementar de uma maneira que o avaliador consiga rodar tudo localmente
 
 ## Arquitetura - Overview
 
@@ -95,7 +96,7 @@ Acredito que o resto vai ser melhor analisado no próprio códio, afinal uma das
 
 ## Modos de rodar o projeto
 
-Caso você tenha o docker-compose instalado, tudo que precisa fazer é rodar o comando "docker-compose up" || "sudo docker-compose up".
+Caso você tenha o docker-compose instalado, tudo que precisa fazer é rodar o comando "docker-compose up" || "sudo docker-compose up". Isso vai abrir o servidor localmente na porta 3000 já configurado com o Redis.
 
 Caso usar o docker-compose seja um impedimento pra você, configurei a aplicação de uma maneira que roda com script de start. Dessa maneira o cash vai ser desativado, removendo assim, a necessidade de ter um container rodando pelo docker-compose. Já que em um cenário real provavelmente teríamos um DB deployado em um ambiente de testes, decidi criar esse "facilitador" para a pessoa responsável por testar meu código, lembrando que isso compromete parte dos testes para fazer a aplicação rodar normalmente sem o sistema de cache.
 
