@@ -21,7 +21,7 @@ Foi criado apenas um ambiente de desenvolvimento, já que estamos lidando com um
 
 A aplicação conta com testes (coverage de 95.77%)
 
-O sistema de cache da aplicação é realizado com auxilio de um container rodando o Redis. No caso do teste que temos apenas um container rodando faria mais sentido fazer o cache dentro do meu próprio servidor. No entanto, fiz o código base deste teste pensando em uma arquitetura de microsserviços, onde com certeza teríamos diversas instâncias rodando em algum orquestrador, e seria ideal se elas conseguissem compartilhar do mesmo cache, por isso o container com Redis existe, ele centraliza essa informação. Acredito que vale a pena apesar de aumentar a complexidade em questão de DevOps. 
+O sistema de cache da aplicação é realizado com auxílio de um container rodando o Redis. No caso do teste que temos apenas um container rodando faria mais sentido fazer o cache dentro do meu próprio servidor. No entanto, fiz o código base deste teste pensando em uma arquitetura de microsserviços, onde com certeza teríamos diversas instâncias rodando em algum orquestrador, e seria ideal se elas conseguissem compartilhar do mesmo cache, por isso o container com Redis existe, ele centraliza essa informação. Acredito que vale a pena apesar de aumentar a complexidade em questão de DevOps. 
 
 ## ESM module
 
