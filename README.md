@@ -62,7 +62,11 @@ A aplicação funciona como pedido no teste:
 
       ]
 
-Logo foi pedido um endpoint que recebesse o parâmetro nome  da organização e devolvesse os repositórios públicos referentes. A grande maioria das organizações possuem um número possível de trazer em apenas uma chamada, mas algumas possuem mais de 1000 repositórios por exemplo. Como não foi indicado um esquema de paginação à ser consumido pelo lado do cliente, foi setado um limite de 500 repositórios para o uso dessa API, evitando uma chamada muito longa e atendendo ao requisito especificado no documento.
+Logo, foi pedido um endpoint que recebesse o parâmetro nome  da organização e devolvesse os repositórios públicos referentes. A grande maioria das organizações possuem um número possível de trazer em apenas uma chamada, mas algumas possuem mais de 1000 repositórios por exemplo. Como não foi indicado um esquema de paginação à ser consumido pelo lado do cliente, foi setado um limite de 500 repositórios para o uso dessa API, evitando uma chamada muito longa e atendendo ao requisito especificado no documento.
+
+## Credenciais
+
+Não vi problemas em expôr o token em um repositório privado pra este teste.
 
 ## API V4
 
