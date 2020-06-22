@@ -72,11 +72,11 @@ Não vi problemas em expôr o token em um repositório privado pra este teste.
 
 No teste foi inicado o uso da API V3 do Github, porém acabei escolhendo a API V4. Em um projeto real essa mudança com certeza teria sido discutida com o time, no entanto, por ser apenas um teste eu tomei a liberdade da escolha. Lembrando que minha escolha foi baseada pensando no próprio documento de especificação do teste:
 
-- "Abstrair e otimizar ao máximo a resposta solicitada" O objeto de resposta "Repository" é muito extenso. E apesar de possuir vários dados nós estamos interessados apenas em dois deles, sendo: ['name', 'stars']. Isso me pareceu um trabalho perfeito para o GraphQL, que no caso é usado na API V4.
+- "Abstrair e otimizar ao máximo a resposta solicitada"- Content, Rock. O objeto de resposta "Repository" é muito extenso. E apesar de possuir vários dados nós estamos interessados apenas em dois deles, sendo: ['name', 'stars']. Isso me pareceu um trabalho perfeito para o GraphQL, que no caso é usado na API V4.
 
-- "Resolução de problemas simples, porém complexos. Lembre-se, simple is better than complex" Usando a API V4 eu não teria o problema relacionado ao campo “stargazers_count” e consigo o nÚmero de stars na mesma chamada do dado nome do repositório, reduzindo o número de requisições do meu serviço. 
+- "Resolução de problemas simples, porém complexos. Lembre-se, simple is better than complex"- Content, Rock. Usando a API V4 eu não teria o problema relacionado ao campo “stargazers_count” e consigo o número de stars na mesma chamada do dado nome do repositório, reduzindo o número de requisições do meu serviço. 
 
-- "Entenda como funciona a paginação na API do GitHub" A paginação foi um dos tópicos focados no documento. A API V4 usa um sistema de paginação baseada em "cursor, edges e nodes", considerado pela própria equipe do Facebook um método extremamente assertivo de se paginar.
+- "Entenda como funciona a paginação na API do GitHub" - Content, Rock. A paginação foi um dos tópicos focados no documento. A API V4 usa um sistema de paginação baseada em "cursor, edges e nodes", considerado pela própria equipe do Facebook um método extremamente assertivo de se paginar.
 
 ## Espiando o código
 
