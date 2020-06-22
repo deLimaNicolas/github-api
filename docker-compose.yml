@@ -12,4 +12,5 @@ services:
       - ENV=dev
       - PORT=3000
       - REDIS_URL=redis://cache
+      - CLOUD=true
     command: sh -c 'npm i && npm run start'
