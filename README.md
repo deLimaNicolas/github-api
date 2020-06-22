@@ -9,7 +9,7 @@ Espero que vocês gostem do meu trabalho, estou ansioso para receber o code-revi
 ## Introdução
 
 Todas as minhas escolhas foram baseadas exclusivamente no que foi pedido no documento de especificação do teste. Logo, meu foco seguiu os seguintes preceitos:
-- Aplicar da melhor maniera para o problema as funcionalidades da API do github
+- Aplicar da melhor maneira para o problema as funcionalidades da API do github
 - Deixar a implementação o mais simples possível, usando "dumb code" sempre que condizente. [Minha opinião sobre dumb code](https://hackernoon.com/why-senior-devs-write-dumb-code-and-how-to-spot-a-junior-from-a-mile-away-27fa263b101a)
 - Gerar uma solução que faça sentido existir como um microsserviço, no caso algo pequeno, com as dependências escolhidas a dedo
 
