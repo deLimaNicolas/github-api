@@ -3,7 +3,7 @@ const { PORT, ENV } = process.env;
 const serverConfig = {
   dev: {
     REDIS: {
-      TTL: 60000, //one minutes
+      TTL: 60000, //one minute
       URL: process.env.REDIS_URL || false
     },
     API_RESPONSE_LIMIT: 500,
