@@ -82,7 +82,7 @@ No teste foi inicado o uso da API V3 do Github, porém acabei escolhendo a API V
 
 Temos o arquivo ./src/application.js e o arquivo .src/server.js separados.
 
-O server.js é responsável por inicializar o server em sí e o application.js cuida de configura-lo ao setar middlewares, rotas ou qualquer outra necessidade que venha a surgir. Essa separação é tinteressante pois isolamos a aplicação e conseguimos testar os endpoints separadamente.
+O server.js é responsável por inicializar o server em sí e o application.js cuida de configura-lo ao setar middlewares, rotas ou qualquer outra necessidade que venha a surgir. Essa separação é interessante pois isolamos a aplicação e conseguimos testar os endpoints separadamente.
 
 #### application.js:
 ![app](https://my-use.s3-sa-east-1.amazonaws.com/app.png)
