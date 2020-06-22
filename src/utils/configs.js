@@ -4,7 +4,7 @@ const serverConfig = {
   dev: {
     REDIS: {
       TTL: 60000, //one minute
-      URL: process.env.REDIS_URL || false
+      URL: process.env.REDIS_URL || 'redis://localhost:6379'
     },
     API_RESPONSE_LIMIT: 500,
     GIT_V4: 'https://api.github.com/graphql',
