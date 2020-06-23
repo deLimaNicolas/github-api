@@ -4,13 +4,14 @@ const serverConfig = {
   dev: {
     REDIS: {
       TTL: 60000, //one minute
-      //URL: process.env.REDIS_URL || false,
-      URL: process.env.REDIS_URL || 'redis://localhost:6379'  },
+      URL: process.env.REDIS_URL || false,
+    //URL: process.env.REDIS_URL || 'redis://localhost:6379'  Use this config if you are able to use redis locally
+    },
     API_RESPONSE_LIMIT: 500,
     GIT_V4: 'https://api.github.com/graphql',
     GIT_PUB_TOKEN: 'Bearer 762f41e51efb51017e0f9228d31c2e6303c618ec',
     ROUTE: '/repositories/',
-    PORT: '4000',
+    PORT: PORT || '3000',
     ERRORS: {
       NOT_FOUND: 'RESOURCE_NOT_FOUND',
     },
