@@ -1,16 +1,19 @@
 /* eslint-disable no-undef */
-import getRepositoriesByOrg, { getLastArrElm } from '../utils/github.js';
+import {
+  getRepositoriesByOrgPaginated,
+  getLastArrElm,
+} from '../utils/github.js';
 
 describe('testing github utils -- using organizations : IBM && Microsoft', () => {
   it('should return object containing repositories, pageInfo and lastCursor -- no after', async () => {
-    const test = await getRepositoriesByOrg({ orgName: 'Netflix' });
+    const test = await getRepositoriesByOrgPaginated({ orgName: 'Netflix' });
     const { repositories: r1, pageInfo: p1, lastCursor: l1 } = test;
 
     expect(r1).toBeTruthy();
     expect(p1).toBeTruthy();
     expect(l1).toBeTruthy();
 
-    const test2 = await getRepositoriesByOrg({ orgName: 'microsoft' });
+    const test2 = await getRepositoriesByOrgPaginated({ orgName: 'microsoft' });
     const { repositories: r2, pageInfo: p2, lastCursor: l2 } = test2;
 
     expect(r2).toBeTruthy();
@@ -19,14 +22,17 @@ describe('testing github utils -- using organizations : IBM && Microsoft', () =>
   });
 
   it('should return object containing repositories, pageInfo and lastCursor -- passing after', async () => {
-    const test = await getRepositoriesByOrg({ orgName: 'IBM' });
+    const test = await getRepositoriesByOrgPaginated({ orgName: 'IBM' });
     const { repositories: r1, pageInfo: p1, lastCursor: l1 } = test;
 
     expect(r1).toBeTruthy();
     expect(p1).toBeTruthy();
     expect(l1).toBeTruthy();
 
-    const test2 = await getRepositoriesByOrg({ orgName: 'IBM', after: l1 });
+    const test2 = await getRepositoriesByOrgPaginated({
+      orgName: 'IBM',
+      after: l1,
+    });
     const { repositories: r2, pageInfo: p2, lastCursor: l2 } = test2;
 
     expect(r2).toBeTruthy();
@@ -35,7 +41,7 @@ describe('testing github utils -- using organizations : IBM && Microsoft', () =>
   });
 
   it('should have no assertions checking if array is sorted correctly by stars DESC', async () => {
-    const test = await getRepositoriesByOrg({ orgName: 'IBM' });
+    const test = await getRepositoriesByOrgPaginated({ orgName: 'IBM' });
     const { repositories: r1 } = test;
     const r1Length = r1.length - 1;
 

@@ -38,7 +38,7 @@ const generateRepositoriesQuery = (orgName, after) => {
   }`;
 };
 
-const getRepositoriesByOrgPaginated = async ({ orgName, after }) => {
+export const getRepositoriesByOrgPaginated = async ({ orgName, after }) => {
   const response = await gitQuery(generateRepositoriesQuery(orgName, after));
 
   if (!response.data.data) return null;
