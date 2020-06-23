@@ -75,4 +75,3 @@ const loopThroughRepositories = async (name) => {
 };
 
 export default loopThroughRepositories;
-
