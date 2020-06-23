@@ -1,7 +1,7 @@
 import serverConfig from './configs.js';
 import axios from 'axios';
 
-const { GIT_V4, GIT_PUB_TOKEN } = serverConfig;
+const { API_RESPONSE_LIMIT, GIT_V4, GIT_PUB_TOKEN } = serverConfig;
 
 export const getLastArrElm = (array) => array[array.length - 1];
 
@@ -56,4 +56,23 @@ const getRepositoriesByOrgPaginated = async ({ orgName, after }) => {
   };
 };
 
-export default getRepositoriesByOrgPaginated ;
+const loopThroughRepositories = async (name) => {
+  const response = [];
+  let hasNextPage = true;
+  let after;
+  while (hasNextPage && response.length < API_RESPONSE_LIMIT) {
+    const repoBatch = await getRepositoriesByOrgPaginated({
+      orgName: name,
+      after,
+    });
+
+    const { pageInfo, lastCursor, repositories } = repoBatch;
+    response.push(...repositories);
+    after = lastCursor;
+    hasNextPage = pageInfo.hasNextPage;
+  }
+  return response;
+};
+
+export default loopThroughRepositories;
+
